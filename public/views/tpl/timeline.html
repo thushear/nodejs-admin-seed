@@ -1,0 +1,46 @@
+<hr/>
+<div ng-controller="WelcomeCtrl">
+    <form role="form" >
+        <input type="hidden" class="form-control" id="index" ng-model="form.pageIndex" value="{{currentPage}}"/>
+        <div class="form-group">
+            <label for="key">TimeLineKey</label>
+            <input type="text" class="form-control" id="key" ng-model="form.key"
+                   placeholder="请输入名称">
+
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-click="doCtrlPagingAct(1)">提交</button>
+    </form>
+  <!-- Simple Example -->
+
+    <div paging
+         page="pageIndex"
+         page-size="pageSize"
+         total="totalCount"
+         paging-action="doCtrlPagingAct(page)">
+    </div>
+
+
+  <table class="table table-hover table-striped" >
+        <caption>TimeLine查询 查询key值 {{ form.key }}</caption>
+        <thead>
+        <tr>
+            <th>key</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="k in keys">
+            <td>{{k}}</td>
+            <td><button type="button" class="btn btn-link" ng-click="deleteMember(k)">Delete</button></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+
+</div>
+
+<!-- 代码片段 -->
